@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700">
       <div className="flex items-center justify-between px-4 py-3 md:px-8">
-        <div className="text-xl font-bold text-white">ArcadePoints</div>
+        <Link href={"/"} className="text-xl font-arcade md:text-3xl font-bold text-white">ArcadeHub</Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 text-white font-medium">

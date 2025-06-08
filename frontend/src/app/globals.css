@@ -3,15 +3,20 @@
 
 
 
+
 :root {
   --gred: #e94134;
   --gblue: #4185f4;
   --ggreen: #33a752;
   --gyellow: #f9bb04;
 }
-@theme {
-  --font-display: 'Press Start 2P', monospace, system-ui
+
+
+.font-arcade {
+  font-family: 'Press Start 2P', monospace;
 }
+
+
 html, body {
   min-height: 100%;
   width: 100%;

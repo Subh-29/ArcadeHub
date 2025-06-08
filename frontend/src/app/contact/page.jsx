@@ -10,7 +10,7 @@ export default function ContactPage() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl sm:text-6xl font-bold text-center bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text mb-10"
+        className="text-4xl font-arcade sm:text-6xl font-bold text-center bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text mb-10"
       >
         Let's Connect
       </motion.h1> 
@@ -32,16 +32,16 @@ export default function ContactPage() {
             alert("📨 Form submitted (functionality not wired yet).");
           }}
         >
-          <div>
+          <div className=' flex flex-col gap-2 '>
             <label className="block text-sm font-medium text-gray-400">Your Name</label>
             <input
               type="text"
               required
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-5 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             />
           </div>
 
-          <div>
+          <div className=' flex flex-col gap-2 '>
             <label className="block text-sm font-medium text-gray-400">Email</label>
             <input
               type="email"
@@ -50,7 +50,7 @@ export default function ContactPage() {
             />
           </div>
 
-          <div>
+          <div className=' flex flex-col gap-2 '>
             <label className="block text-sm font-medium text-gray-400">Message</label>
             <textarea
               rows={5}

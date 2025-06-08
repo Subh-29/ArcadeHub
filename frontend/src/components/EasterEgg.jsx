@@ -33,6 +33,7 @@ export default function FirecrackerButton() {
   return (
     <span
       onClick={burstFireworks}
+      className=" select-none cursor-pointer "
     //   className="bg-red-600 text-white px-6 py-3 rounded-md text-xl shadow-md hover:scale-105 transition-transform"
     >
      🎆

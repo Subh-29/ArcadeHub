@@ -45,7 +45,9 @@ export default function RootLayout({ children }) {
       ">
           {loading && <Loader />}
           {!loading && <Navbar />}
+          <div className="mt-4">
           {!loading && children}
+          </div>
           {!loading && <Footer />}
           <ToastContainer
             position="top-center"
