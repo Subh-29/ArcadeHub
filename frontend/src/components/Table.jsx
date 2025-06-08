@@ -1,16 +1,12 @@
 const Table = ( data ) => {
-
-
     let totalPoints = 0;
     data?.count?.forEach(element => {
-        console.log(element.key, " ", element.point);
-        
         totalPoints += element.point;
     });
 
 
     return (
-        <div className="overflow-x-auto rounded-xl border border-gray-700 shadow-[6px_6px_0px_rgba(0,0,0,0.8)] bg-gray-900 text-white">
+        <div className="overflow-x-auto h-full rounded-xl border border-gray-700 shadow-[6px_6px_0px_rgba(0,0,0,0.8)] bg-gray-900 text-white">
             <table className="min-w-full table-auto text-left">
                 <thead className="bg-gray-800 border-b border-gray-600">
                     <tr>

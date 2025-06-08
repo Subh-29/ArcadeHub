@@ -80,9 +80,9 @@ app.post("/scrape", async (req, res) => {
 
             const excludedNames = [
                 "Level", "Base camp", "certification zone", "trivia", "Arcade Skills Resolve",
-                "Arcade Love Beyond Query", "Color Your Skills", "Tech Care", "NetworSkills"
+                "Arcade Love Beyond Query", "Color Your Skills", "Arcade TechCare", "NetworSkills"
             ];
-            const includeNames = ["Arcade Love Beyond Query", "Color Your Skills", "Tech Care", "NetworSkills"];
+            const includeNames = ["Arcade Love", "Arcade Color", "Arcade TechCare", "NetworSkills"];
 
             const specGames = badges?.filter(badge => includeNames.some(name => badge?.badgeName?.toLowerCase().includes(name.toLowerCase())));
 
