@@ -8,6 +8,8 @@ import BadgeGrid from "./Badges";
 import { toast } from "react-toastify";
 import Table from "./Table";
 import Public from "./Public";
+import EasterEgg from './EasterEgg'
+import { motion } from 'framer-motion'
 
 const Card = () => {
     const {
@@ -50,7 +52,7 @@ const Card = () => {
         // You can do something like:
         // setPoints(response.data.totalPoints);
     }
-    console.log("Counts: ", counts);
+
 
     const ProfileHandler = async () => {
         if (!isValidProfile) {
@@ -65,10 +67,8 @@ const Card = () => {
         const formData = watch();
         axios.post("/api/route", { ...formData, flag: false })
             .then(res => {
-                // console.log("API Response:", res);
                 setProfileData(res?.data?.data);
                 setHero(res?.data?.data?.profile);
-
             })
             .catch(err => console.error(err))
             .finally(() => {
@@ -76,13 +76,18 @@ const Card = () => {
             });
         // setIsProfileOpen(false);
     }
+    // console.log("Hero: ", hero);
     // console.log("loading in card? ", loading);
 
     return (
         // <div className=" min-h-full">
         <>
 
-            <div className=" z-10 px-8 md:px-10 lg:px-15 py-15 min-h-full  h-fit grid sm:grid-cols-2 gap-4 justify-center sm:justify-between items-center bg-gray-900 border border-gray-600 rounded-2xl transition-all ease-in-out ">
+            <motion.div
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className=" z-10 px-8 md:px-10 lg:px-15 py-15 min-h-full  h-fit grid sm:grid-cols-2 gap-4 justify-center sm:justify-between items-center bg-gray-900 border border-gray-600 rounded-2xl transition-all ease-in-out shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] ">
                 <div className=" text-3xl sm:text-5xl md:text-6xl text-center ">
                     <p>Arcade Points Calculator</p>
                 </div>
@@ -140,7 +145,8 @@ const Card = () => {
                             Profile
                         </button>
                         <div className="w-17 aspect-square bg-gray-800 rounded-full border border-gray-600 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] flex items-center justify-center text-lg md:text-2xl text-white transition-all ease-in duration-200 active:scale-90 md:hover:scale-105 cursor-pointer">
-                            <p className=" pointer-events-none">🥚</p>
+                            {<EasterEgg />}
+
                         </div>
                         <button
                             type="submit"
@@ -150,21 +156,20 @@ const Card = () => {
                         </button>
                     </div>
                 </form>
-            </div>
-            { (hero && counts) &&
-            <div className=" w-full py-5 grid gap-4 md:gap-5 grid-cols-1 md:grid-cols-2 justify-center items-center md:justify-evenly ">
-                {hero && <Public profile={hero} />}
-                {counts && <Table count={counts} />}
-            </div>}
-            {isProfileOpen && <Profile profileData={profileData} loading={profLoading} onClose={() => { setIsProfileOpen(false); setHero(counts ? hero : null) }} />}
+            </motion.div>
+            {(hero && counts) &&
+                <div className=" w-full py-5 grid gap-4 md:gap-5 grid-cols-1 md:grid-cols-2 justify-center items-center md:justify-evenly ">
+                    {hero && <Public profile={hero} />}
+                    {counts && <Table count={counts} />}
+                </div>}
+            {isProfileOpen && <Profile profileData={profileData} hero={hero} loading={profLoading} onClose={() => { setIsProfileOpen(false); }} />}
             {
-              (loading || badgeData) &&  (
+                (loading || badgeData) && (
                     <>
-                        {/* {console.log("Loading in the ;;;;", loading)} */}
 
                         <BadgeGrid data={badgeData || {}} loading={loading} />
                     </>)}
-        {/* </div> */}
+            {/* </div> */}
         </>
     );
 };

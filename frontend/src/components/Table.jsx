@@ -1,14 +1,5 @@
 const Table = ( data ) => {
-    //   const categories = [
-    //     { key: 'skillBadge', title: 'Skill Badges', points: 100 },
-    //     { key: 'labFree', title: 'Free Lab Badges', points: 30 },
-    //     { key: 'games', title: 'Game Badges', points: 50 },
-    //     { key: 'specGames', title: 'Special Game Badges', points: 75 },
-    //     { key: 'trivia', title: 'Trivia Badges', points: 20 },
-    //     { key: 'certifications', title: 'Certifications', points: 200 },
-    //   ];
 
-    console.log("Inside table: ", data);
 
     let totalPoints = 0;
     data?.count?.forEach(element => {

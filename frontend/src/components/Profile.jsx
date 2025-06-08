@@ -1,6 +1,7 @@
 "use client";
 
 import BadgeGrid from "./Badges";
+import Public from "./Public";
 
 const Profile = (props) => {
     
@@ -20,6 +21,7 @@ const Profile = (props) => {
 
                 {/* Modal Content */}
                 <h2 className="text-white text-xl mb-4">Profile Details</h2>
+                {<Public profile={props?.hero} />}
                 {<BadgeGrid data={props?.profileData || {}} loading={props.loading} />}
             </div>
         </div>

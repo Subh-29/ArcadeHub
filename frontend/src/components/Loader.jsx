@@ -6,7 +6,6 @@ const Loader = () => {
     const [animationStage, setAnimationStage] = useState("slideIn"); // slideIn -> slideOut -> done
     const [angle, setAngle] = useState(45);
     const [height, setHeight] = useState();
-
     useEffect(() => {
         function updateAngle() {
             const width = window.innerWidth;
@@ -23,7 +22,7 @@ const Loader = () => {
 
         updateAngle();
         window.addEventListener("resize", updateAngle);
-        return () => window.removeEventListener("resize", updateAngle);
+        return () => {window.removeEventListener("resize", updateAngle)};
     }, []);
 
     useEffect(() => {
@@ -43,25 +42,7 @@ const Loader = () => {
 
     return (
         <div className="w-full h-full bg-(--ggreen) z-[99999] ">
-            {/* style={{transform: `rotate(${270.33+angle}deg)`}} */}
-            {/* <div
-        style={{
-          transform: `rotate(${270.5 + angle}deg)`,
-          height: `${heigh}px`, // use diagonal height so it actually covers full corner-to-corner
-        }}
-        className={`red-line absolute origin-top top-0 left-0 z-[9999] w-[4px] bg-red-500`}
-      ></div> */}
-
-            {/* <div
-                style={{
-                    transform: `rotate(${270 + angle}deg)`,
-                }}
-                className="top-panel absolute"
-            ></div>
-
-            <div style={{ transform: `rotate(${270 + angle}deg)` }} className="bottom-panel absolute"></div> */}
-
-            {/* <div className=" w-full bg-green-400"></div> */}
+            
             <div className=" absolute top-0 w-full h-[50%] bg-(--gred) z-[120] ">
 
             </div>
