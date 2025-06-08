@@ -3,6 +3,8 @@ const Table = ( data ) => {
 
     let totalPoints = 0;
     data?.count?.forEach(element => {
+        console.log(element.key, " ", element.point);
+        
         totalPoints += element.point;
     });
 

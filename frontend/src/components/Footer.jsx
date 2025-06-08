@@ -1,7 +1,8 @@
 'use client';
 
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDiscord, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function Footer() {
   return (
@@ -31,9 +32,12 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4 text-white">Connect with us</h3>
           <div className="flex space-x-4 text-lg">
-            <a href="https://github.com/yourhandle" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition"><FaGithub /></a>
-            <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition"><FaLinkedin /></a>
-            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition"><FaTwitter /></a>
+            <a href="https://github.com/Subh-29" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/subhradip-kar-39306a251/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition"><FaLinkedin /></a>
+            <div className=" cursor-pointer hover:text-cyan-400 transition"onClick={() => {
+            navigator.clipboard.writeText("wcsubh");
+            toast.success("Discord Id Copied")
+          }} ><FaDiscord /></div>
             <a href="mailto:your@email.com" className="hover:text-cyan-400 transition"><FaEnvelope /></a>
           </div>
         </div>

@@ -204,6 +204,7 @@ const Card = () => {
     const [profLoading, setProfLoading] = useState(false);
     const [counts, setCounts] = useState(null);
     const [hero, setHero] = useState(null);
+    const [bonus, setBonus] = useState(null);
 
     //   const profileLink = watch("profile_link") || "";
     //   const isValidProfile = /^https:\/\/www\\.cloudskillsboost\\.google\/public_profiles\/.+$/.test(profileLink);
@@ -220,6 +221,12 @@ const Card = () => {
                 setBadgeData(res?.data?.data);
                 setHero(res?.data?.data?.profile);
                 setCounts(res?.data?.data?.counts);
+                if (formData.bonus === "with") {
+
+                    // console.log(res?.data?.data);
+                    
+                    setBonus(res?.data?.data?.bonusEarned);
+                }
             })
             .catch((err) => console.error(err))
             .finally(() => {
@@ -310,7 +317,7 @@ const Card = () => {
                             className="w-full bg-gray-800 px-4 py-3 border border-gray-600 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)] rounded-sm text-white text-lg"
                         >
                             <option value="without">Without Bonus</option>
-                            <option value="with">Add Bonus</option>
+                            <option value="with" selected>Add Bonus</option>
                         </motion.select>
                     </div>
 
@@ -337,7 +344,7 @@ const Card = () => {
 
             {hero && counts && (
                 <div className="w-full py-5 grid gap-4 md:gap-5 grid-cols-1 md:grid-cols-2 justify-center items-center">
-                    <Public profile={hero} />
+                    <Public bonus={bonus} profile={hero} />
                     <Table count={counts} />
                 </div>
             )}

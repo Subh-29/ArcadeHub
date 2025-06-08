@@ -3,7 +3,7 @@ import express from 'express';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import cors from 'cors';
-import { extractTextFromImage } from './ocr.js'; 
+import { extractTextFromImage } from './ocr.js';
 
 
 const app = express();
@@ -104,7 +104,7 @@ app.post("/scrape", async (req, res) => {
                 {
                     "key": "Skill Badge",
                     "count": skillBadge.length,
-                    "point": 1 * skillBadge.length
+                    "point": 0.5 * skillBadge.length
                 },
                 {
                     "key": "Lab Free",
@@ -133,7 +133,43 @@ app.post("/scrape", async (req, res) => {
                 }
             ];
 
-            res.json({ profile, bonus, skillBadge, labFree, games, specGames, trivia, certifications, counts });
+            if (bonus === "with") {
+                const bonusEarned = {
+                    swag: "N/A",
+                    bonus: 0,
+                    total: 0
+                }
+                let totalPoints = 0;
+                counts.forEach(element => {
+                    totalPoints += element.point;
+                })
+                if ((counts[0].count >= 44) && (counts[1].count >= 16) && ((counts[2].count + counts[3].count + counts[5].count) >= 10) && (counts[4].count >= 8)) {
+                    bonusEarned.bonus = 25;
+                }
+                else if ((counts[0].count >= 30) && (counts[1].count >= 12) && ((counts[2].count + counts[3].count + counts[5].count) >= 8) && (counts[4].count >= 7)) {
+                    bonusEarned.bonus = 15;
+                }
+                else if ((counts[0].count >= 20) && (counts[1].count >= 8) && ((counts[2].count + counts[3].count + counts[5].count) >= 6) && (counts[4].count >= 6)) {
+                    bonusEarned.bonus = 8;
+                }
+                else if ((counts[0].count >= 10) && (counts[1].count >= 4) && ((counts[2].count + counts[3].count + counts[5].count) >= 4) && (counts[4].count >= 4)) {
+                    bonusEarned.bonus = 2;
+                }
+                bonusEarned.total = (totalPoints + bonusEarned.bonus);
+                if (bonusEarned.total >= 85)
+                    bonusEarned.swag = "Arcade Legend"
+                else if (bonusEarned.total >= 75)
+                    bonusEarned.swag = "Arcade Champion"
+                else if (bonusEarned.total >= 65)
+                    bonusEarned.swag = "Arcade Ranger"
+                else if (bonusEarned.total >= 40)
+                    bonusEarned.swag = "Arcade Trooper"
+                else if (bonusEarned.total >= 20)
+                    bonusEarned.swag = "Arcade Novice"
+                res.json({ bonusEarned, profile, bonus, skillBadge, labFree, games, specGames, trivia, certifications, counts });
+            }
+            else
+                res.json({ profile, bonus, skillBadge, labFree, games, specGames, trivia, certifications, counts });
         }
         else {
             res.json({ profile, bonus, badges });

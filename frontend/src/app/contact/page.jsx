@@ -1,7 +1,8 @@
 'use client';
 
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaDiscord } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 
 export default function ContactPage() {
   return (
@@ -13,7 +14,7 @@ export default function ContactPage() {
         className="text-4xl font-arcade sm:text-6xl font-bold text-center bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text mb-10"
       >
         Let's Connect
-      </motion.h1> 
+      </motion.h1>
 
       <motion.p
         initial={{ opacity: 0 }}
@@ -71,9 +72,12 @@ export default function ContactPage() {
       <div className="mt-12 text-center space-y-4">
         <h3 className="text-xl font-semibold">Follow Me</h3>
         <div className="flex justify-center space-x-6 text-2xl text-cyan-400">
-          <a href="https://github.com/yourhandle" target="_blank" rel="noreferrer"><FaGithub /></a>
-          <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-          <a href="https://twitter.com/yourhandle" target="_blank" rel="noreferrer"><FaTwitter /></a>
+          <a href="https://github.com/Subh-29" target="_blank" rel="noreferrer"><FaGithub /></a>
+          <a href="https://www.linkedin.com/in/subhradip-kar-39306a251/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+          <div className=' cursor-pointer ' onClick={() => {
+            navigator.clipboard.writeText("wcsubh");
+            toast.success("Discord Id Copied")
+          }} ><FaDiscord /></div>
           <a href="mailto:your@email.com"><FaEnvelope /></a>
         </div>
       </div>

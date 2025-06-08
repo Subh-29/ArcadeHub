@@ -43,12 +43,6 @@ export default function RootLayout({ children }) {
       <body className=" 
         bg-blue-950 
       ">
-          {loading && <Loader />}
-          {!loading && <Navbar />}
-          <div className="mt-4">
-          {!loading && children}
-          </div>
-          {!loading && <Footer />}
           <ToastContainer
             position="top-center"
             autoClose={3000}
@@ -58,6 +52,12 @@ export default function RootLayout({ children }) {
             pauseOnHover
             draggable
             theme="dark" />
+          {loading && <Loader />}
+          {!loading && <Navbar />}
+          <div className="mt-4">
+          {!loading && children}
+          </div>
+          {!loading && <Footer />}
         
       </body>
     </html>

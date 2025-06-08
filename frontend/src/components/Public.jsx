@@ -1,6 +1,6 @@
 "use client";
 
-const Public = ({ profile }) => {
+const Public = ({ bonus, profile }) => {
   if (!profile) return null;
 
   const {
@@ -10,7 +10,8 @@ const Public = ({ profile }) => {
     score = "N/A",
     leagueImage = ""
   } = profile;
-
+  // console.log(bonus);
+  
   return (
     <div className="w-full h-full  p-4 bg-gray-900 border border-gray-700 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.8)] text-white space-y-4">
       
@@ -36,6 +37,18 @@ const Public = ({ profile }) => {
         <div className="flex justify-between items-center">
           <span className="text-gray-400 text-xl">Score</span>
           <span className="font-semibold text-lg">{score}</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-gray-400 text-xl">Bonus</span>
+          <span className="font-semibold text-lg">{bonus?.bonus}</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-gray-400 text-xl">Total Points</span>
+          <span className="font-semibold text-lg">{bonus?.total}</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-gray-400 text-xl">Swags Eligibility</span>
+          <span className="font-semibold text-lg text-cyan-500">{bonus?.swag}</span>
         </div>
       </div>
 
