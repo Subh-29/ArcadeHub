@@ -142,7 +142,7 @@ app.post("/scrape", async (req, res) => {
             res.json({ profile, bonus, skillBadge, labFree, games, specGames, trivia, certifications, counts });
         }
         else {
-            res.json({ profile_link, bonus, badges });
+            res.json({ profile, bonus, badges });
         }
 
 
