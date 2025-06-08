@@ -16,7 +16,7 @@ app.post("/scrape", async (req, res) => {
         const authHeader = req.headers.authorization;
         const token = authHeader && authHeader.split(" ")[1]; // Bearer <token>
         if (!token || token !== process.env.API_SECRET) {
-            return res.status(401).json({ error: "Unauthorized request" });
+            return res.status(401).json({ error: "Unauthorized request Brother" });
         }
 
         const { profile_link, bonus, flag } = req.body;
@@ -142,7 +142,7 @@ app.post("/scrape", async (req, res) => {
             res.json({ profile, bonus, skillBadge, labFree, games, specGames, trivia, certifications, counts });
         }
         else {
-            res.json({ profile, bonus, badges });
+            res.json({ pro, bonus, badges });
         }
 
 
