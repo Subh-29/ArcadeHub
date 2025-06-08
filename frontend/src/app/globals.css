@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+
+
+:root {
+  --gred: #e94134;
+  --gblue: #4185f4;
+  --ggreen: #33a752;
+  --gyellow: #f9bb04;
+}
+@theme {
+  --font-display: 'Press Start 2P', monospace, system-ui
+}
+html, body {
+  min-height: 100%;
+  width: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* The fixed red diagonal line */
+
+
+/* Top sliding black panel */
+.top-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300vw;
+  height: 300vh;
+  background-color: var(--gyellow);
+  transform-origin: top left;
+  /* transform:  translate(0, 0); */
+  z-index: 10000;
+}
+
+/* Bottom sliding black panel */
+.bottom-panel {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300vw;
+  height: 300vh;
+  background-color: var(--gblue);
+  transform-origin: bottom right;
+  z-index: 10000;
+}
+
+/* Animation for closing: panels slide IN toward the center */
+@keyframes slideInTop {
+  0% {
+    transform:  translate(0, 0);
+  }
+  100% {
+    transform:  translate(100vw, 100vh);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    transform:  translate(0, 0);
+  }
+  100% {
+    transform:  translate(-100vw, -100vh);
+  }
+}
+
+/* Animation for opening: panels slide OUT off-screen */
+@keyframes slideOutTop {
+  0% {
+    transform:  translate(100vw, 100vh);
+  }
+  100% {
+    transform:  translate(-250vw, -250vh);
+  }
+}
+
+@keyframes slideOutBottom {
+  0% {
+    transform:  translate(-100vw, -100vh);
+  }
+  100% {
+    transform:  translate(250vw, 250vh);
+  }
+}
+
+/* Utility classes for animations */
+.slide-in-top {
+  animation: slideInTop 1s forwards ease-in-out;
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 1s forwards ease-in-out;
+}
+
+.slide-out-top {
+  animation: slideOutTop 1.5s forwards ease-in-out;
+  /* animation-delay: 1.2s; */
+}
+
+.slide-out-bottom {
+  animation: slideOutBottom 1.5s forwards ease-in-out;
+  /* animation-delay: 1.2s; */
+}
