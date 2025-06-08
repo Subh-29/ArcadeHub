@@ -3,7 +3,7 @@ import express from 'express';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import cors from 'cors';
-import { extractTextFromImage } from './ocr.js'; // NOTE the `.js` at end is required in ESM
+import { extractTextFromImage } from './ocr.js'; 
 
 
 const app = express();
@@ -77,9 +77,7 @@ app.post("/scrape", async (req, res) => {
                 return name.includes("level") || name.includes("camp");
             });
             const certifications = badges?.filter(badge => badge?.badgeName?.toLowerCase().includes("certification zone"));
-            // const games = [];
-            // const specGames = [];
-            // const certifications = [];
+
             const excludedNames = [
                 "Level", "Base camp", "certification zone", "trivia", "Arcade Skills Resolve",
                 "Arcade Love Beyond Query", "Color Your Skills", "Tech Care", "NetworSkills"
@@ -89,10 +87,6 @@ app.post("/scrape", async (req, res) => {
             const specGames = badges?.filter(badge => includeNames.some(name => badge?.badgeName?.toLowerCase().includes(name.toLowerCase())));
 
             const skillBadge = validBadges.filter((badge, i) => {
-                // const date = new Date(badge.badgeDate);
-                // const checkDates[] = [new Date("Apr")];
-                // if (date < new Date("Jan 01, 2025"))
-                //     return false; 
                 const ocrText = ocrResults[i].toLowerCase();
                 const isCompletionBadge = ocrText.includes("completion badge");
                 const isExcludedName = excludedNames.some(name =>
@@ -142,7 +136,7 @@ app.post("/scrape", async (req, res) => {
             res.json({ profile, bonus, skillBadge, labFree, games, specGames, trivia, certifications, counts });
         }
         else {
-            res.json({ pro, bonus, badges });
+            res.json({ profile, bonus, badges });
         }
 
 
