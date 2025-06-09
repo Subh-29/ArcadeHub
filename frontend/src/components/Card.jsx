@@ -79,10 +79,10 @@ const Card = () => {
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.5 }}
-                className="relative z-10 px-8 md:px-10 lg:px-15 py-16 w-full max-w-5xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white border border-gray-600 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)]"
+                className="relative flex gap-3 flex-col md:flex-row z-10 px-8 md:px-10 lg:px-15 py-16 w-full max-w-5xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white border border-gray-600 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)]"
             >
-                <div className="text-center mb-10">
-                    <h1 className="text-3xl sm:text-5xl md:text-6xl font-arcade  font-bold mb-3 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                <div className="text-center mb-10 w-full">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-arcade  font-bold mb-3 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                         Arcade Points Calculator
                     </h1>
                     <p className="text-gray-400 text-lg">
@@ -92,7 +92,7 @@ const Card = () => {
 
                 <form
                     onSubmit={handleSubmit(SubmitHandler)}
-                    className="grid gap-8"
+                    className="grid gap-8 w-full"
                 >
                     <div className="flex gap-6 items-center">
                         <div
