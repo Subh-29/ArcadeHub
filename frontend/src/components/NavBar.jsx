@@ -4,11 +4,19 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const pathname = usePathname()
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Calculator", href: "/calculator" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700">
@@ -16,10 +24,17 @@ const Navbar = () => {
         <Link href={"/"} className="text-xl font-arcade md:text-3xl font-bold text-white">ArcadeHub</Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 text-white font-medium">
-          <Link href="/" className="hover:text-yellow-400">Home</Link>
-          <Link href="/calculator" className="hover:text-yellow-400">Calculator</Link>
-          <Link href="/about" className="hover:text-yellow-400">About</Link>
+        <div className="hidden md:flex space-x-10 text-white font-medium">
+          {navLinks.map(({ name, href }) => (
+            <Link
+              key={name}
+              href={href}
+              className={`hover:text-yellow-400 ${pathname === href ? "text-cyan-400 font-semibold" : "text-gray-300"
+                }`}
+            >
+              {name}
+            </Link>
+          ))}
         </div>
 
         {/* Hamburger */}
@@ -55,9 +70,16 @@ const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <Link href="/" className="block hover:text-yellow-400">Home</Link>
-          <Link href="/calculator" className="block hover:text-yellow-400">Calculator</Link>
-          <Link href="/about" className="block hover:text-yellow-400">About</Link>
+          {navLinks.map(({ name, href }) => (
+            <Link
+              key={name}
+              href={href}
+              className={` block hover:text-yellow-400 ${pathname === href ? "text-cyan-400 font-semibold" : "text-gray-300"
+                }`}
+            >
+              {name}
+            </Link>
+          ))}
         </motion.div>
       )}
     </nav>
