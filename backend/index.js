@@ -3,7 +3,7 @@ import express from 'express';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import cors from 'cors';
-import { extractTextFromImage } from './ocr.js';
+// import { extractTextFromImage } from './ocr.js';
 
 
 const app = express();
@@ -67,8 +67,29 @@ app.post("/scrape", async (req, res) => {
 
             const validBadges = badges.filter(badge => badge.badgeImage);
 
+            //Lab Free Badges Names:
+            const labFreeNames = [
+                "Customer Engagement Suite with Google AI Architecture",
+                "Digital Transformation with Google Cloud",
+                "Exploring Data Transformation with Google Cloud",
+                "Google Calendar",
+                "Google Docs",
+                "Google Drive",
+                "Google Meet",
+                "Google Sheets",
+                "Google Slides",
+                "Innovating with Google Cloud Artificial Intelligence",
+                "Machine Learning Operations (MLOps) with Vertex AI: Model Evaluation",
+                "Modernize Infrastructure and Applications with Google Cloud",
+                "Responsible AI for Digital Leaders with Google Cloud",
+                "Responsible AI: Applying AI Principles with Google Cloud",
+                "Scaling with Google Cloud Operations",
+                "Trust and Security with Google Cloud",
+                "Building Complex End to End Self-Service Experiences in Dialogflow CX",
+                "Conversational AI on Vertex AI and Dialogflow CX"
+            ];
             // Do OCR in parallel with resizing
-            const ocrResults = await Promise.all(validBadges.map(badge => extractTextFromImage(badge.badgeImage)));
+            //const ocrResults = await Promise.all(validBadges.map(badge => extractTextFromImage(badge.badgeImage)));
             const labFree = [];
             const trivia = badges?.filter(badge => badge?.badgeName?.toLowerCase().includes("trivia"));
             const games = badges?.filter(badge => {
@@ -87,8 +108,9 @@ app.post("/scrape", async (req, res) => {
             const specGames = badges?.filter(badge => includeNames.some(name => badge?.badgeName?.toLowerCase().includes(name.toLowerCase())));
 
             const skillBadge = validBadges.filter((badge, i) => {
-                const ocrText = ocrResults[i].toLowerCase();
-                const isCompletionBadge = ocrText.includes("completion badge");
+                // const ocrText = ocrResults[i].toLowerCase();
+                // const isCompletionBadge = ocrText.includes("completion badge");
+                const isCompletionBadge = labFreeNames.some(name => badge?.badgeName?.toLowerCase() === name.toLowerCase());
                 const isExcludedName = excludedNames.some(name =>
                     badge?.badgeName?.toLowerCase().includes(name.toLowerCase())
                 );
