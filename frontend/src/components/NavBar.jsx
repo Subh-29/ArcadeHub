@@ -76,6 +76,7 @@ const Navbar = () => {
               href={href}
               className={` block hover:text-yellow-400 ${pathname === href ? "text-cyan-400 font-semibold" : "text-gray-300"
                 }`}
+              onClick={toggleMenu}
             >
               {name}
             </Link>
