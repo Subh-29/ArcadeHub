@@ -6,7 +6,7 @@ export const metadata = {
   description:
     "Effortlessly calculate and track your Google Cloud Arcade Points using your public profile. Built with ❤️ for cloud challengers and certification hunters.",
   verification: {
-    google: "uK-J0VFacF5656kmnUMh20BMnH34i0PIK_5I3GuzprY",
+    google: 'uK-J0VFacF5656kmnUMh20BMnH34i0PIK_5I3GuzprY',
   },
   keywords: [
     "Google Cloud",
