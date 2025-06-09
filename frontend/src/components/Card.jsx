@@ -82,7 +82,7 @@ const Card = () => {
                 className="relative flex gap-3 flex-col md:flex-row z-10 px-8 md:px-10 lg:px-15 py-16 w-full max-w-5xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white border border-gray-600 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,0.8)]"
             >
                 <div className="text-center mb-10 w-full">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-arcade  font-bold mb-3 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-arcade  font-bold mb-3 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                         Arcade Points Calculator
                     </h1>
                     <p className="text-gray-400 text-lg">
