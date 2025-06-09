@@ -5,9 +5,9 @@ export const metadata = {
   title: "Cloud Arcade Points Calculator | Google Cloud Skills Boost",
   description:
     "Effortlessly calculate and track your Google Cloud Arcade Points using your public profile. Built with ❤️ for cloud challengers and certification hunters.",
-  verification: {
-    google: 'uK-J0VFacF5656kmnUMh20BMnH34i0PIK_5I3GuzprY',
-  },
+  // verification: {
+  //   google: 'uK-J0VFacF5656kmnUMh20BMnH34i0PIK_5I3GuzprY',
+  // },
   keywords: [
     "Google Cloud",
     "Arcade Points",
@@ -85,6 +85,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Manual meta tag that metadata couldn't generate properly */}
+        <meta
+          name="google-site-verification"
+          content="uK-J0VFacF5656kmnUMh20BMnH34i0PIK_5I3GuzprY" />
+      </head>
       <body>
         <LayoutClient>
 
