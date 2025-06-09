@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://arcade-hub-zeta.vercel.app
+
+# Sitemaps
+Sitemap: https://arcade-hub-zeta.vercel.app/sitemap.xml
